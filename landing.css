@@ -46,7 +46,7 @@
 
 
 *,::before,::after{
-    box-sizing: bmenu-box;
+    box-sizing: menu-box;
 }
 html{
     scroll-behavior: smooth;
@@ -163,7 +163,6 @@ img{
     right: 0;
 }
 
-Active home/
 .active::after{
     position: absolute;
     content: "";
@@ -295,7 +294,7 @@ Active home/
   .menu__img img:last-child {
     margin-right: 0;
   }
-/* ===== FOOOTER ======*/
+/* ===== FOOTER ======*/
 .footer{
     background-color: var(--dark-color);
 }
