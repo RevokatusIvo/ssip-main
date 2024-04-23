@@ -3,6 +3,14 @@
 include __DIR__ . "/database.php";
 session_start();
 
+if (isset($_POST["logoutBtn"])) {
+    // Menghapus semua session
+    session_destroy();
+    // Mengarahkan kembali ke halaman login atau halaman awal
+    header("location: login.html");
+    exit();
+}
+
 if (isset($_SESSION["is_login"]) && $_SESSION["is_login"]) {
     header("location: landing.html");
 }
@@ -29,8 +37,7 @@ if (isset($_POST["loginBtn"])) {
             header("location: landing.html");
         } else {
             $message = "INVALID USERNAME OR PASSWORD";
-            // Redirect back to the login page with the error message
-            header("location: login.html?message=" . urlencode($message));
+            // Tidak perlu redirect, simpan pesan kesalahan untuk ditampilkan di bawah
         }
     
 }
@@ -45,11 +52,18 @@ if (isset($_POST["loginBtn"])) {
     <title>Document</title>
 </head>
 <body>
+<?php if (isset($_SESSION["is_login"]) && $_SESSION["is_login"]) { ?>
+    <div class="logout-container">
+        <form action="submit-login.php" method="POST">
+            <input type="submit" name="logoutBtn" value="Logout" class="logout-button"></input>
+        </form>
+    </div>
+<?php } else { ?>
 <div class="login-container">
     <form action="submit-login.php" method="POST" class="login-form">
         <h2>Login</h2>
-        <?php if (isset($_GET["message"])) { ?>
-            <p class="error-message"><?php echo htmlspecialchars($_GET["message"]); ?></p>
+        <?php if (!empty($message)) { ?>
+            <p class="error-message"><?php echo htmlspecialchars($message); ?></p>
         <?php } ?>
         <div class="input-group">
             <label for="username">Username</label>
@@ -63,5 +77,6 @@ if (isset($_POST["loginBtn"])) {
         <p>Belum punya akun? <a href="register.html">Daftar Sekarang</a></p>
     </form>
 </div>
+<?php } ?>
 </body>
 </html>
