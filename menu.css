@@ -1,11 +1,13 @@
 .menu-column img {
-    margin-left: 20px;
-    margin-top: 20px;
+    margin-left: auto;
+    margin-top: auto;
     border-radius: 10px;
     transition: 0.3s ease;
     height: 300px;
     object-fit: cover;
     margin-bottom: 0px;
+    display: block;
+    
 }
 
 .menu-column img:hover {
@@ -31,6 +33,10 @@
 .menu-column, .menu-column-text {
     flex: 1;
 }
+
+
+
+
 
 
 
