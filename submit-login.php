@@ -6,7 +6,6 @@ session_start();
 if (isset($_POST["logoutBtn"])) {
 
     session_destroy();
-    // Mengarahkan kembali ke halaman login atau halaman awal
     header("location: login.html");
     exit();
 }
@@ -24,10 +23,14 @@ if (isset($_POST["loginBtn"])) {
         $username = $_POST["username"];
         $password = $_POST["password"];
 
-        $sql = "SELECT * FROM admin where
+        
+        $sql = "SELECT id, username, password FROM admin where
+        username = '$username' and
+        password = '$password'
+        UNION
+        SELECT customer_id, username, password FROM customers where
         username = '$username' and
         password = '$password'";
-
         $result = $db -> query($sql);
 
         if ($result -> num_rows > 0) {
@@ -78,7 +81,7 @@ if (isset($_POST["loginBtn"])) {
             <input type="password" id="password" name="password" required>
         </div>
         <input type="submit" class="login-button" name="loginBtn" value="Login"></input>
-        <p>Belum punya akun? <a href="register.html">Daftar Sekarang</a></p>
+        <p>Belum punya akun? <a href="register.php">Daftar Sekarang</a></p>
     </form>
 </div>
 <?php } ?>
