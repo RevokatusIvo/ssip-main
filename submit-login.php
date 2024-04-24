@@ -4,7 +4,7 @@ include __DIR__ . "/database.php";
 session_start();
 
 if (isset($_POST["logoutBtn"])) {
-    // Menghapus semua session
+
     session_destroy();
     // Mengarahkan kembali ke halaman login atau halaman awal
     header("location: login.html");
