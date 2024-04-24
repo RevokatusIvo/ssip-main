@@ -3,9 +3,10 @@
 include "database.php";
 
 if (isset($_POST["addButton"])) {
-    
-    $name = $_POST["menu_name"];
+    $dishid = $_POST["menuId"];
+    $name = $_POST["menuname"];
     $price = $_POST["price"];
+    $desc = $_POST["desc"];
 
     // Check if the dish_id already exists in the database
     $check_query = mysqli_query($db, "SELECT * FROM menu WHERE dish_id='$dishid'");
@@ -45,18 +46,22 @@ if (isset($_POST["addButton"])) {
     <form action="" method="post">
         
         <div class="mb-3">
-        <label for="menuname" class="form-label">Menu Name</label>
+        <label for="menuId" class="form-label">Menu ID :</label>
+        <input type="text" class="form-control" id="menuId" name="menuId" required>
+        </div>
+        <div class="mb-3">
+        <label for="menuname" class="form-label">Menu Name :</label>
         <input type="text" class="form-control" id="menuname" name="menuname" required>
         </div>
         <div class="mb-3">
-        <label for="price" class="form-label">Price</label>
+        <label for="price" class="form-label">Price :</label>
         <input type="number" class="form-control" id="price" name="price" required>
         </div>
         <div class="mb-3">
-        <label for="desc" class="form-label">Description</label>
+        <label for="desc" class="form-label">Description :</label>
         <input type="textarea" class="form-control" id="desc" name="desc" required>
         </div>
-        
+
         <div class="mb-3">
         <label for="d" class="form-label">Insert Image: </label>
         <input type="file" class="form-control" id="photo" name="photo" required>
