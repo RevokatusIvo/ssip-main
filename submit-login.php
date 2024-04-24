@@ -18,7 +18,9 @@ if (isset($_SESSION["is_login"]) && $_SESSION["is_login"]) {
 $message = "";
 
 if (isset($_POST["loginBtn"])) {
-   
+    if ($_POST["username"] ===  "" || $_POST["password"] ===  "") {
+        $message = "Please fill in the blank!";
+    } else {
         $username = $_POST["username"];
         $password = $_POST["password"];
 
@@ -40,7 +42,7 @@ if (isset($_POST["loginBtn"])) {
             // Redirect back to the login page with the error message
             header("location: submit-login.php?message=" . urlencode($message));
         }
-    
+    }
 }
 
 ?>
@@ -59,6 +61,7 @@ if (isset($_POST["loginBtn"])) {
             <input type="submit" name="logoutBtn" value="Logout" class="logout-button"></input>
         </form>
     </div>
+    <i><b><?= $message ?></b></i>
 <?php } else { ?>
 <div class="login-container">
     <form action="submit-login.php" method="POST" class="login-form">
