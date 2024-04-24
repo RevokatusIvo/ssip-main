@@ -24,7 +24,7 @@
                     <ul class="nav__list">
                         <li class="nav__item"><a href="#home" class="nav__link active">home</a></li>
                         <li class="nav__item"><a href="#reserve" class="nav__link">Reserve</a></li>
-                        <li class="nav__item"><a href="menu.html" class="nav__link">menu</a></li>
+                        <li class="nav__item"><a href="menu.php" class="nav__link">menu</a></li>
                         <?php
                         session_start();
                         if(isset($_SESSION['username'])) {
