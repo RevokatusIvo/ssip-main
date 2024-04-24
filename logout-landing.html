@@ -115,23 +115,5 @@
                 </div>
             </div>
         </footer>
-
-        <!--===== SCROLL REVEAL =====-->
-        <script src="https://unpkg.com/scrollreveal"></script>
-        <!--===== MAIN JS =====-->
-        <script src="assets/js/main.js"></script>
-        <script>
-          // Function to handle logout, clears user session or token and redirects to login page
-          function logout() {
-            localStorage.removeItem('userToken'); // Assuming token is stored in localStorage
-            window.location.href = 'login.html'; // Redirect to login page
-          }
-
-          // Adding event listener to logout link
-          document.querySelector('.nav__link.logout').addEventListener('click', function(event) {
-            event.preventDefault(); // Prevent default link behavior
-            logout(); // Call logout function
-          });
-        </script>
     </body>
 </html>
