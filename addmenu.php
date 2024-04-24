@@ -9,6 +9,33 @@
             width: 50%;
             margin-top: 100px;
         }
+        input[type="text"], input[type="number"], input[type="textarea"] {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 10px 12px;
+            margin: 1px 0;
+            border: 0.5px solid grey;
+            border-radius: 10px;
+            background-color: #f8f8f8;
+            margin-left: 20px;
+        }
+        .form-label {
+            margin-left: 20px;
+            color: black;
+        }
+        .register-button {
+        background-color: #4CAF50; 
+        color: white; 
+        padding: 6px 20px; 
+        margin: 10px 20px; 
+        border: none; 
+        border-radius: 10px; 
+        cursor: pointer; 
+        width: 150px; 
+    }
+    .register-button:hover {
+        background-color: #45a049; 
+    }
     </style>
 </head>
 
