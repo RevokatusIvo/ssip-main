@@ -1,6 +1,34 @@
+<?php
+
+include "database.php";
+
+if (isset($_POST["addButton"])) {
+    
+    $name = $_POST["menu_name"];
+    $price = $_POST["price"];
+
+    // Check if the dish_id already exists in the database
+    $check_query = mysqli_query($db, "SELECT * FROM menu WHERE dish_id='$dishid'");
+    if (mysqli_num_rows($check_query) > 0) {
+        // Redirect back to the add menu page with an error message
+        header("location: add.php?error=existing_id");
+        exit(); // Stop further execution
+    }
+
+    // Insert new menu into the database
+    $result = mysqli_query($db, "INSERT INTO menu (dish_id, dish_name, price) VALUES ('$dishid','$name', '$price')");
+    $result2 = mysqli_query($db, "INSERT INTO stock (stock_id, dish_id, quantity) VALUES ('$dishid','$dishid', 0)");
+    
+    // Redirect to dashboard after successful insertion
+    header("location: dashboard.php");
+    exit(); // Stop further execution
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,7 +56,13 @@
         <label for="desc" class="form-label">Description</label>
         <input type="textarea" class="form-control" id="desc" name="desc" required>
         </div>
-        <button type="submit" name="addbutton" class="register-button">Add</button>
+        
+        <div class="mb-3">
+        <label for="d" class="form-label">Insert Image: </label>
+        <input type="file" class="form-control" id="photo" name="photo" required>
+        </div>
+
+        <button type="submit" name="addButton" class="register-button">Add</button>
        
 
     </form>
@@ -38,29 +72,4 @@
 
 </html>
 
-    <?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Get form data
-        $quantity = $_POST['quantity'];
-        $menu_id = $_POST['menu_id'];
-
-        // Connect to database
-        $conn = mysqli_connect("localhost", "username", "password", "database");
-
-        // Check connection
-        if (!$conn) {
-            die("Connection failed: " . mysqli_connect_error());
-        }
-
-        // Insert data into database
-        $sql = "INSERT INTO orders (menu_id, quantity) VALUES ('$menu_id', '$quantity')";
-        if (mysqli_query($conn, $sql)) {
-            echo "Data inserted successfully";
-        } else {
-            echo "Error: " . mysqli_error($conn);
-        }
-
-        // Close connection
-        mysqli_close($conn);
-    }
-    ?>
+  
