@@ -28,6 +28,7 @@
         <label for="desc" class="form-label">Description</label>
         <input type="textarea" class="form-control" id="desc" name="desc" required>
         </div>
+        <button type="submit" name="addbutton" class="register-button">Add</button>
        
 
     </form>
