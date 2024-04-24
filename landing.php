@@ -25,7 +25,16 @@
                         <li class="nav__item"><a href="#home" class="nav__link active">home</a></li>
                         <li class="nav__item"><a href="#reserve" class="nav__link">Reserve</a></li>
                         <li class="nav__item"><a href="#menu" class="nav__link">menu</a></li>
-                        <li class="nav__item"><a href="login.html" class="nav__link">Login</a></li>
+                        <?php
+                        session_start();
+                        if(isset($_SESSION['username'])) {
+                            // Jika sudah login, tampilkan tautan Logout
+                            echo '<li class="nav__item"><a href="logout.php" class="nav__link">Logout</a></li>';
+                        } else {
+                            // Jika belum login, tampilkan tautan Login
+                            echo '<li class="nav__item"><a href="submit-login.php" class="nav__link">Login</a></li>';
+                        }
+                        ?>
                     </ul>
                 </div>
 
@@ -120,5 +129,6 @@
         <script src="https://unpkg.com/scrollreveal"></script>
         <!--===== MAIN JS =====-->
         <script src="assets/js/main.js"></script>
+        
     </body>
 </html>

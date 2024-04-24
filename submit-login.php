@@ -4,7 +4,7 @@ include __DIR__ . "/database.php";
 session_start();
 
 if (isset($_SESSION["is_login"]) && $_SESSION["is_login"]) {
-    header("location: landing.html");
+    header("location: landing.php");
 }
 
 $message = "";
@@ -26,11 +26,11 @@ if (isset($_POST["loginBtn"])) {
             $_SESSION["is_login"] = true;
             $_SESSION["username"] = $data["username"];
         
-            header("location: landing.html");
+            header("location: landing.php");
         } else {
             $message = "INVALID USERNAME OR PASSWORD";
             // Redirect back to the login page with the error message
-            header("location: login.html?message=" . urlencode($message));
+            header("location: submit-login.php?message=" . urlencode($message));
         }
     
 }
