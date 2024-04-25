@@ -75,11 +75,9 @@ if (isset($_POST["addButton"])) {
 </head>
 
 <body>
-<<<<<<< HEAD
     <?php include 'layout/header.php' ?>
     <div class="container">
         <form action="" method="post">
-=======
     <?php include 'layout/header.php'?>
     <form action="" method="post">
         
@@ -104,7 +102,6 @@ if (isset($_POST["addButton"])) {
         <label for="d" class="form-label">Insert Image: </label>
         <input type="file" class="form-control" id="photo" name="photo" required>
         </div>
->>>>>>> f0dc2c92fbdee291e360e4e010b6f3725a6e68da
 
             <div class="mb-3">
                 <label for="menuname" class="form-label">Menu Name</label>
