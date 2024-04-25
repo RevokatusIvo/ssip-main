@@ -118,6 +118,7 @@
         } else {
             echo "<tr><td colspan='4'>Tidak ada booking tersedia.</td></tr>";
         }
+        
 
         $conn->close();
         ?>
