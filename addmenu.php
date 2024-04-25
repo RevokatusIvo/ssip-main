@@ -3,13 +3,8 @@
 include "database.php";
 
 if (isset($_POST["addButton"])) {
-<<<<<<< HEAD
-
-    $name = $_POST["menu_name"];
-=======
     $dishid = $_POST["menuId"];
     $name = $_POST["menuname"];
->>>>>>> f0dc2c92fbdee291e360e4e010b6f3725a6e68da
     $price = $_POST["price"];
     $desc = $_POST["desc"];
 
